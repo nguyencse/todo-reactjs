@@ -26,3 +26,27 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.title-project, .button-group-center{
+  text-align: center;
+}
+
+th, td{
+  text-align: center;
+}
+
+.tb-order{
+  width: 10%;
+}
+
+.tb-name{
+  width: 40%;
+}
+
+.tb-status{
+  width: 30%;
+}
+
+.tb-action{
+  width: 20%;
+}

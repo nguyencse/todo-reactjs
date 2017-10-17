@@ -34,7 +34,7 @@ class App extends Component {
                         <button type="button" className="btn btn-warning btn-item">
                           <span className="glyphicon glyphicon-plus" /> Save</button>
                         <button type="button" className="btn btn-danger btn-item">
-                          <span className="glyphicon glyphicon-remove" /> Save</button>
+                          <span className="glyphicon glyphicon-remove" /> Cancel</button>
                       </div>
                     </div>
                   </form>

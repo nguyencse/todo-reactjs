@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showForm: true,
+      isDisplayForm: true,
       mainWidth: "col-xs-8 col-sm-8 col-md-8 col-lg-8"
     }
   }
@@ -17,12 +17,12 @@ class App extends Component {
   handleToggle = (value) => {
     if (value === true) {
       this.setState({
-        showForm: value,
+        isDisplayForm: value,
         mainWidth: "col-xs-8 col-sm-8 col-md-8 col-lg-8"
       })
     }else{
       this.setState({
-        showForm: value,
+        isDisplayForm: value,
         mainWidth: "col-xs-12 col-sm-12 col-md-12 col-lg-12"
       })
     }
@@ -36,11 +36,11 @@ class App extends Component {
           <hr />
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              {this.state.showForm ? <TaskForm visibility={this.state.showForm} onHandleToggle={this.handleToggle} /> : null}
+              {this.state.isDisplayForm ? <TaskForm visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} /> : null}
             </div>
             <div className={this.state.mainWidth}>
               <div className="form-group">
-                <TaskControl visibility={this.state.showForm} onHandleToggle={this.handleToggle}/>
+                <TaskControl visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle}/>
               </div>
               <div className="form-group">
                 <div className="input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">

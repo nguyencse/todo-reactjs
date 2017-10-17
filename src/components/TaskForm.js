@@ -4,14 +4,14 @@ class TaskForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showForm: this.props.visibility
+      isDisplayForm: this.props.visibility
     }
   }
 
   onCloseForm = () => {
     this.setState({
-      showForm: !this.state.showForm
-    }, () => this.props.onHandleToggle(this.state.showForm))
+      isDisplayForm: !this.state.isDisplayForm
+    }, () => this.props.onHandleToggle(this.state.isDisplayForm))
   }
 
   render() {

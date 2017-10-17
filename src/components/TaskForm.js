@@ -1,18 +1,31 @@
 import React, { Component } from 'react'
 
 class TaskForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showForm: this.props.visibility
+    }
+  }
+
+  onCloseForm = () => {
+    this.setState({
+      showForm: !this.state.showForm
+    }, () => this.props.onHandleToggle(this.state.showForm))
+  }
+
   render() {
     return (
       <div className="panel panel-warning">
         <div className="panel-heading clearfix">
           <h4 className="panel-title pull-left">New Task</h4>
-          <button type="button" className="pull-right btn btn-warning btn-circle"><i className="glyphicon glyphicon-remove"></i></button>
+          <button type="button" className="pull-right btn btn-warning btn-circle" onClick={this.onCloseForm}><i className="glyphicon glyphicon-remove"></i></button>
         </div>
         <div className="panel-body">
           <form method="POST">
             <div className="form-group">
-              <label>Task name</label>
-              <input type="text" className="form-control" />
+              <label>Name</label>
+              <input type="text" className="form-control" placeholder="Enter your task here ..."/>
             </div>
             <div className="form-group">
               <label>Status</label>

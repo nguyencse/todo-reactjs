@@ -6,6 +6,28 @@ import TaskSearch from './components/TaskSearch'
 import TaskControl from './components/TaskControl'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showForm: true,
+      mainWidth: "col-xs-8 col-sm-8 col-md-8 col-lg-8"
+    }
+  }
+
+  handleToggle = (value) => {
+    if (value === true) {
+      this.setState({
+        showForm: value,
+        mainWidth: "col-xs-8 col-sm-8 col-md-8 col-lg-8"
+      })
+    }else{
+      this.setState({
+        showForm: value,
+        mainWidth: "col-xs-12 col-sm-12 col-md-12 col-lg-12"
+      })
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -14,11 +36,11 @@ class App extends Component {
           <hr />
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              <TaskForm />
+              {this.state.showForm ? <TaskForm visibility={this.state.showForm} onHandleToggle={this.handleToggle} /> : null}
             </div>
-            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div className={this.state.mainWidth}>
               <div className="form-group">
-                <TaskControl />
+                <TaskControl visibility={this.state.showForm} onHandleToggle={this.handleToggle}/>
               </div>
               <div className="form-group">
                 <div className="input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">

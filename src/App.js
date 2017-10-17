@@ -6,13 +6,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <h2 className="title-project">TASKS MANAGEMENT</h2>
+          <h2 className="title-project"></h2>
           <hr />
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div className="panel panel-warning">
-                <div className="panel-heading">
-                  <h3 className="panel-title">New Task</h3>
+                <div className="panel-heading clearfix">
+                  <h4 className="panel-title pull-left">New Task</h4>
+                  <button type="button" className="pull-right btn btn-warning btn-circle"><i className="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div className="panel-body">
                   <form method="POST">
@@ -30,9 +31,9 @@ class App extends Component {
                     </div>
                     <div className="form-group">
                       <div className="button-group-center">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-warning btn-item">
                           <span className="glyphicon glyphicon-plus" /> Save</button>
-                        <button type="button" className="btn btn-danger">
+                        <button type="button" className="btn btn-danger btn-item">
                           <span className="glyphicon glyphicon-remove" /> Save</button>
                       </div>
                     </div>
@@ -43,14 +44,14 @@ class App extends Component {
             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
               <div className="form-group">
                 <button type="button" className="btn btn-primary">
-                  <span className="glyphicon glyphicon-plus" /> Add new task</button>
+                  <span className="glyphicon glyphicon-plus" /> Add Task</button>
               </div>
               <div className="form-group">
-                <div className="input-group col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div className="input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <input type="text" className="form-control" placeholder="Keyword..." />
                   <span className="input-group-btn">
                     <button className="btn btn-primary" type="button">
-                      <span className="glyphicon glyphicon-search" /> Search</button>
+                      <span className="glyphicon glyphicon-search" /></button>
                   </span>
                 </div>
               </div>
@@ -67,7 +68,7 @@ class App extends Component {
                   <tr>
                     <td />
                     <td>
-                      <input type="text" className="form-control" defaultValue required="required" />
+                      <input type="text" className="form-control" required="required" />
                     </td>
                     <td>
                       <select className="form-control" required="required">

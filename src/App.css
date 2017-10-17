@@ -60,3 +60,15 @@ th, td{
   line-height: 1.428571429;
   border-radius: 15px;
 }
+
+.td-hidden{
+  background-color: "#ccc"
+}
+
+.td-pending {
+  background-color: "#8e44ad"
+}
+
+.td-completed{
+  background-color: "#8e44ad"
+}

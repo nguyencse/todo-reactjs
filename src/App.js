@@ -4,28 +4,27 @@ import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import TaskSearch from './components/TaskSearch'
 import TaskControl from './components/TaskControl'
+import {getCookie} from './helper/functions'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isDisplayForm: true,
-      mainWidth: "col-xs-8 col-sm-8 col-md-8 col-lg-8"
+      isDisplayForm: false,
+      allTasks: getCookie('tasks') !== "" ? JSON.parse(getCookie("tasks")) : []
     }
   }
 
   handleToggle = (value) => {
-    if (value === true) {
-      this.setState({
-        isDisplayForm: value,
-        mainWidth: "col-xs-8 col-sm-8 col-md-8 col-lg-8"
-      })
-    }else{
-      this.setState({
-        isDisplayForm: value,
-        mainWidth: "col-xs-12 col-sm-12 col-md-12 col-lg-12"
-      })
-    }
+    this.setState({
+      isDisplayForm: value
+    })
+  }
+
+  handleTaskList = (allTasks) => {
+    this.setState({
+      allTasks: allTasks
+    })
   }
 
   render() {
@@ -36,18 +35,18 @@ class App extends Component {
           <hr />
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              {this.state.isDisplayForm ? <TaskForm visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} /> : null}
+              {this.state.isDisplayForm ? <TaskForm allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} /> : null}
             </div>
-            <div className={this.state.mainWidth}>
+            <div className={this.state.isDisplayForm ? "col-xs-8 col-sm-8 col-md-8 col-lg-8" : "col-xs-12 col-sm-12 col-md-12 col-lg-12"}>
               <div className="form-group">
-                <TaskControl visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle}/>
+                <TaskControl visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} />
               </div>
               <div className="form-group">
                 <div className="input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <TaskSearch />
                 </div>
               </div>
-              <TaskList />
+              <TaskList allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList}/>
             </div>
           </div>
         </div>

@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import TaskItem from './TaskItem'
 
 class TaskList extends Component {
   render() {
+    var showAllTasks = this.props.allTasks.map((task, index) => {
+      return (
+        <TaskItem index={index} name={task.name} status={task.status}/>
+      )
+    })
+
     return (
-      <table className="table table-bordered table-hover">
+      <table className="table table-bordered table-hover" >
         <thead>
           <tr>
             <th className="tb-order">Order</th>
@@ -13,20 +20,7 @@ class TaskList extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td />
-            <td>
-              <input type="text" className="form-control" required="required" />
-            </td>
-            <td>
-              <select className="form-control" required="required">
-                <option value={0}>Hidden</option>
-                <option value={1}>Pending</option>
-                <option value={2}>Completed</option>
-              </select>
-            </td>
-            <td />
-          </tr>
+          {showAllTasks}
         </tbody>
       </table>
     )

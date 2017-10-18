@@ -11,7 +11,8 @@ class App extends Component {
     super(props)
     this.state = {
       isDisplayForm: false,
-      allTasks: getCookie('tasks') !== "" ? JSON.parse(getCookie("tasks")) : []
+      allTasks: getCookie('tasks') !== "" ? JSON.parse(getCookie("tasks")) : [],
+      task: null
     }
   }
 
@@ -19,11 +20,24 @@ class App extends Component {
     this.setState({
       isDisplayForm: value
     })
+
+    if(!value){
+      this.setState({
+        task: null
+      })
+    }
   }
 
   handleTaskList = (allTasks) => {
     this.setState({
       allTasks: allTasks
+    })
+  }
+
+  handleEditTask = (task) => {
+    this.setState({
+      isDisplayForm: task != null,
+      task: task
     })
   }
 
@@ -35,7 +49,7 @@ class App extends Component {
           <hr />
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              {this.state.isDisplayForm ? <TaskForm allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} /> : null}
+              {this.state.isDisplayForm ? <TaskForm onHandleToggle={this.handleToggle} task={this.state.task} allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} onHandleEditTask={this.handleEditTask}/> : null}
             </div>
             <div className={this.state.isDisplayForm ? "col-xs-8 col-sm-8 col-md-8 col-lg-8" : "col-xs-12 col-sm-12 col-md-12 col-lg-12"}>
               <div className="form-group">
@@ -46,7 +60,7 @@ class App extends Component {
                   <TaskSearch />
                 </div>
               </div>
-              <TaskList allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList}/>
+              <TaskList allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} onHandleEditTask={this.handleEditTask}/>
             </div>
           </div>
         </div>

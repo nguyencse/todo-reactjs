@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
 
 class TaskItem extends Component {
+  onHandleDeleteTask = (id) => {
+    this.props.onHandleDeleteTask(id)
+  }
+
+  onHandleEditTask = (id) => {
+    this.props.onHandleEditTask(id)
+  }
+
   render() {
     return (
       <tr>
-        <td>{this.props.index + 1}</td>
+        <td>{this.props.index}</td>
         <td>
-          <input type="text" className="form-control" required="required" defaultValue={this.props.name} />
+          <input disabled type="text" className="form-control" value={this.props.name} />
         </td>
         <td>
-          <select className="form-control" disabled value={this.props.status}>
-            <option value="Hidden" className="hidden">Hidden</option>
-            <option value="Pending" className="pending">Pending</option>
-            <option value="Completed" className="completed">Completed</option>
+          <select disabled className="form-control" value={this.props.status}>
+            <option value="Hidden">Hidden</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
           </select>
         </td>
-        <td></td>
+        <td>
+          <a className="btn btn-primary btn-sm btn-action" onClick={()=>this.onHandleEditTask(this.props.index)}>
+            <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </a>
+          <a className="btn btn-danger btn-sm btn-action" onClick={() => this.onHandleDeleteTask(this.props.index)}>
+            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </a>
+        </td>
       </tr>
     )
   }

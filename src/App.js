@@ -5,6 +5,7 @@ import TaskList from './components/TaskList'
 import TaskSearch from './components/TaskSearch'
 import TaskControl from './components/TaskControl'
 import {getCookie} from './helper/functions'
+import './redux/hello'
 
 class App extends Component {
   constructor(props) {

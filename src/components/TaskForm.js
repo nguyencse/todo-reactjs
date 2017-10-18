@@ -5,7 +5,7 @@ class TaskForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isDisplayForm: this.props.visibility 
+      isDisplayForm: this.props.visibility
     }
   }
 
@@ -57,7 +57,7 @@ class TaskForm extends Component {
             </div>
             <div className="form-group">
               <label>Status</label>
-              <select className="form-control" ref="status" value={this.props.task != null ? this.props.task.status : ""}>
+              <select className="form-control" ref="status" defaultChecked={this.props.task != null ? this.props.task.status : ""}>
                 <option value="Hidden">Hidden</option>
                 <option value="Pending">Pending</option>
                 <option value="Completed">Completed</option>

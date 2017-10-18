@@ -41,6 +41,12 @@ class App extends Component {
     })
   }
 
+  handleSearchResults = (allTasks) => {
+    this.setState({
+      allTasks: allTasks
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -49,7 +55,7 @@ class App extends Component {
           <hr />
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              {this.state.isDisplayForm ? <TaskForm onHandleToggle={this.handleToggle} task={this.state.task} allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} visibility={this.state.isDisplayForm} onHandleToggle={this.handleToggle} onHandleEditTask={this.handleEditTask}/> : null}
+              {this.state.isDisplayForm ? <TaskForm onHandleToggle={this.handleToggle} task={this.state.task} allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} visibility={this.state.isDisplayForm} onHandleEditTask={this.handleEditTask}/> : null}
             </div>
             <div className={this.state.isDisplayForm ? "col-xs-8 col-sm-8 col-md-8 col-lg-8" : "col-xs-12 col-sm-12 col-md-12 col-lg-12"}>
               <div className="form-group">
@@ -57,7 +63,7 @@ class App extends Component {
               </div>
               <div className="form-group">
                 <div className="input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <TaskSearch />
+                  <TaskSearch allTasks={this.state.allTasks}/>
                 </div>
               </div>
               <TaskList allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} onHandleEditTask={this.handleEditTask}/>

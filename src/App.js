@@ -4,8 +4,7 @@ import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import TaskSearch from './components/TaskSearch'
 import TaskControl from './components/TaskControl'
-import {getCookie} from './helper/functions'
-import './redux/hello'
+import { getCookie } from './helper/functions'
 
 class App extends Component {
   constructor(props) {
@@ -67,7 +66,7 @@ class App extends Component {
                   <TaskSearch allTasks={this.state.allTasks}/>
                 </div>
               </div>
-              <TaskList allTasks={this.state.allTasks} onHandleTaskList={this.handleTaskList} onHandleEditTask={this.handleEditTask}/>
+              <TaskList onHandleTaskList={this.handleTaskList} onHandleEditTask={this.handleEditTask}/>
             </div>
           </div>
         </div>

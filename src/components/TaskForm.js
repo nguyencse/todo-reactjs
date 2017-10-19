@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { setCookie } from "../helper/functions"
+import { setCookie } from '../helper/functions'
+import * as actions from '../actions/index'
+import { connect } from 'react-redux'
 
 class TaskForm extends Component {
   constructor(props) {
@@ -38,7 +40,8 @@ class TaskForm extends Component {
     }
     setCookie("tasks", JSON.stringify(allTasks), 1)
 
-    this.props.onHandleTaskList(allTasks)
+    // this.props.onHandleTaskList(allTasks)
+    this.props.addTask(newTask)
     this.onCloseForm()
   }
 
@@ -78,4 +81,18 @@ class TaskForm extends Component {
   }
 }
 
-export default TaskForm
+const mapStateToProps = (state) => {
+  return {
+    
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    addTask: (task) => {
+      dispatch(actions.addTask(task))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TaskItem from './TaskItem'
 import { setCookie } from '../helper/functions'
+import { connect } from 'react-redux'
 
 class TaskList extends Component {
   constructor(props){
@@ -11,7 +12,8 @@ class TaskList extends Component {
   }
 
   handleDeleteTask = (id) => {
-    var removeTaskIndex = this.state.allTasks.map((task, index) => task.id).indexOf(id)
+    // var removeTaskIndex = this.state.allTasks.map((task, index) => task.id).indexOf(id)
+    var removeTaskIndex = this.state.allTasks.findIndex((task) => task.id === id)
     var allTasks = this.state.allTasks
     allTasks.splice(removeTaskIndex, 1)
 
@@ -52,4 +54,10 @@ class TaskList extends Component {
   }
 }
 
-export default TaskList
+const mapStateToProps = (state) => {
+  return {
+    allTasks: state.tasks.allTasks
+  }
+}
+
+export default connect(mapStateToProps, null)(TaskList)
